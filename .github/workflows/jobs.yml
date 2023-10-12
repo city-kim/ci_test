@@ -18,5 +18,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: pnpm preview
           working-directory: ../ci_test
