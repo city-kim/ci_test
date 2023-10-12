@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { getCssVar } from '@/util/color'
 import { JOIN_SNS } from '@/constants/STORES'
 
+import type { UserFlow, InflowCalculator } from '@/types/store'
 import type { PropType } from 'vue'
 
 import ContainerHeading from '@/components/DashBoard/ContainerHeading.vue'
@@ -20,13 +21,13 @@ import SkeletonContainer from '@/components/Common/Skeleton/SkeletonContainer.vu
 const props = defineProps({
   inflowSum: {
     type: Object as PropType<{
-      base: any,
-      compare: any
+      base: UserFlow,
+      compare: UserFlow
     }>,
     required: true
   },
   inflowCalculator: {
-    type: Object as PropType<any>,
+    type: Object as PropType<InflowCalculator>,
     required: true
   },
   joinVisitCountChart: {
