@@ -1,16 +1,4 @@
-import { DateTime } from 'luxon'
 import { USER_FLOW, PAYMENT } from '@/constants/STORES'
-
-interface DateParameter {
-  beforeDate: {
-    from: DateTime
-    to: DateTime
-  }
-  afterDate: {
-    from: DateTime
-    to: DateTime
-  }
-}
 
 // userFlow의 JoinSns 타입
 interface JoinSns {
@@ -99,7 +87,6 @@ interface Purchase {
 }
 
 export type {
-  DateParameter,
   JoinSns,
   JoinType,
   UserFlow,
