@@ -29,7 +29,7 @@ jobs:
           const name = '${{ github.workflow   }}';
           const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
           const success = '${{ job.status }}' === 'success';
-          const body = `${name}: ${success ? '✅ 유닛테스트 통과' : '❌ 유닛테스트 실패'}\n${url}`;
+          const body = `${success ? '✅ 유닛테스트 통과' : '❌ 유닛테스트 실패'}\n${url}`;
 
           await github.rest.issues.createComment({
             issue_number: context.issue.number,
@@ -44,6 +44,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'pnpm'
     - uses: cypress-io/github-action@v5
       with:
         wait-on: http://localhost:5173
@@ -57,7 +65,7 @@ jobs:
           const name = '${{ github.workflow   }}';
           const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
           const success = '${{ job.status }}' === 'success';
-          const body = `${job}: ${success ? '✅ e2e TEST 통과' : '❌ e2e TEST 실패'}\n${url}`;
+          const body = `${success ? '✅ e2e TEST 통과' : '❌ e2e TEST 실패'}\n${url}`;
 
           await github.rest.issues.createComment({
             issue_number: context.issue.number,
