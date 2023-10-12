@@ -53,13 +53,13 @@ jobs:
         node-version: '18.x'
         cache: 'pnpm'
     - name: Install dependencies
-      working-directory: ./app
+      working-directory: ./
       run: pnpm install
 
     - name: Cypress run
       uses: cypress-io/github-action@v5
       with:
-        working-directory: ./app
+        working-directory: ./
         build: pnpm build
         start: pnpm preview
         wait-on: 'http://localhost:5173'
