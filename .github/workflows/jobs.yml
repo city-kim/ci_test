@@ -55,7 +55,7 @@ jobs:
     - uses: cypress-io/github-action@v6
       with:
         install: false
-        wait-on: 'https://localhost:5173/ci_test/'
+        wait-on: 'https://localhost:5173/'
         build: pnpm build
         start: npx vite --host
     - name: Add comment to PR
