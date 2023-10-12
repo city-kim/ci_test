@@ -55,8 +55,9 @@ jobs:
     - uses: cypress-io/github-action@v6
       with:
         install: false
-        command: pnpm test:e2e
         wait-on: 'https://localhost:5173/ci_test/'
+        build: pnpm build
+        start: npx vite --host
     - name: Add comment to PR
       uses: actions/github-script@v6
       if: always()
