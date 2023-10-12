@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@storybook/preview-api": "^7.4.6",
+    "@types/jsdom": "^21.1.3",
     "@types/luxon": "^3.3.2",
     "chart.js": "^4.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
