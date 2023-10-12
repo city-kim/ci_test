@@ -43,13 +43,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Cypress run
-      uses: cypress-io/github-action@v6
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
       with:
-        build: npm run build
-        start: npm start
+        version: 8
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'pnpm'
+    - name: Install dependencies
+      working-directory: ./app
+      run: pnpm install
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v5
+      with:
+        working-directory: ./app
+        build: pnpm build
+        start: pnpm preview
+        wait-on: 'http://localhost:5173'
     - name: Add comment to PR
       uses: actions/github-script@v6
       if: always()
