@@ -44,25 +44,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
+    - uses: cypress-io/github-action@v5
       with:
-        version: 8
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-        cache: 'pnpm'
-    - name: Install dependencies
-      working-directory: ./
-      run: pnpm install
-
-    - name: Cypress run
-      uses: cypress-io/github-action@v5
-      with:
-        working-directory: ./
-        build: pnpm build
-        start: pnpm preview
-        wait-on: 'http://localhost:5173'
+        wait-on: http://localhost:5173
+        start: npx vite --host
     - name: Add comment to PR
       uses: actions/github-script@v6
       if: always()
@@ -72,7 +57,7 @@ jobs:
           const name = '${{ github.workflow   }}';
           const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
           const success = '${{ job.status }}' === 'success';
-          const body = `${name}: ${success ? '✅ e2e TEST 통과' : '❌ e2e TEST 실패'}\n${url}`;
+          const body = `${job}: ${success ? '✅ e2e TEST 통과' : '❌ e2e TEST 실패'}\n${url}`;
 
           await github.rest.issues.createComment({
             issue_number: context.issue.number,
