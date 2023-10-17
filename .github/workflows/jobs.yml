@@ -17,3 +17,8 @@ jobs:
           version: 8
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with: 
+          install: false
+          build: pnpm build
+          start: pnpm preview
+          run: pnpm dev

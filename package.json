@@ -15,7 +15,7 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_0537c5fdca9821d"
+    "chromatic": "npx chromatic --project-token=chpt_8c9338a0786f9f4"
   },
   "dependencies": {
     "@storybook/preview-api": "^7.4.6",
