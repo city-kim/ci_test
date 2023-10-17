@@ -13,7 +13,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: '/ci_test/',
+  base: './',
   css: {
     preprocessorOptions: {
       scss: {
