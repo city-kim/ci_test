@@ -60,6 +60,8 @@ export const Primary: Story = {
       { key: 'day', text: '일간' },
       { key: 'week', text: '주간' },
       { key: 'month', text: '월간' },
+      { key: 'quarter', text: '분기별' },
+      { key: 'year', text: '연간' },
     ],
   },
 }
@@ -89,6 +91,8 @@ export const Mobile: Story = {
       { key: 'day', text: '일간' },
       { key: 'week', text: '주간' },
       { key: 'month', text: '월간' },
+      { key: 'quarter', text: '분기별' },
+      { key: 'year', text: '연간' },
     ],
   },
 }
