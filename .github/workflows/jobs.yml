@@ -11,11 +11,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with: 
-          working-directory: ../../
+        with:
+          working-directory: ../ci_test
